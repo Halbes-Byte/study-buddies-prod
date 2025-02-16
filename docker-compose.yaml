@@ -12,7 +12,7 @@ services:
       - "3000:3000"
 ######################################################
   keycloak_web:
-    image: quay.io/keycloak/keycloak:latest
+    image: quay.io/keycloak/keycloak:22.0.1
     container_name: kc-web
     environment:
       KC_DB: postgres
@@ -20,8 +20,8 @@ services:
       KC_DB_USERNAME: ${KC_DB_USERNAME}
       KC_DB_PASSWORD: ${KC_DB_PASSWORD}
 
-      KC_HOSTNAME: localhost
-      KC_HOSTNAME_PORT: 7070
+      KC_HOSTNAME: 0.0.0.0
+      KC_HOSTNAME_PORT: 8080
       KC_HOSTNAME_STRICT: 'false'
       KC_HOSTNAME_STRICT_HTTPS: 'false'
 
@@ -32,10 +32,10 @@ services:
     depends_on:
       - keycloakdb
     ports:
-      - '7070:7070'
+      - '7070:8080'
 ######################################################
   keycloakdb:
-    image: postgres:latest
+    image: postgres:15
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
