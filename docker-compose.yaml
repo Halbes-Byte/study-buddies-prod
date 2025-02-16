@@ -6,7 +6,7 @@ services:
       - "8080:8080"
 ######################################################
   frontend:
-    image: daenges/study-buddies-frontend:latest
+    image: panderu/study-buddies-frontend:latest
     container_name: sb-frontend
     ports:
       - "3000:3000"
